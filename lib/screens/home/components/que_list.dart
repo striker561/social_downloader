@@ -14,8 +14,8 @@ class QueList extends StatelessWidget {
       children: [
         Padding(
           padding: const EdgeInsets.only(
-            left: gPadding,
-            right: gPadding,
+            left: gPadding / 2,
+            right: gPadding / 2,
           ),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -54,28 +54,50 @@ class QueList extends StatelessWidget {
           height: 10,
         ),
         ListView.builder(
-            itemCount: 2,
+            itemCount: 5,
             scrollDirection: Axis.vertical,
             shrinkWrap: true,
             physics: const BouncingScrollPhysics(),
             itemBuilder: (BuildContext context, int index) {
-              return ListTile(
-                leading: const Icon(
-                  MdiIcons.downloadBox,
-                  color: kSecondary,
-                ),
-                trailing: Text(
-                  "Pendng",
-                  style: GoogleFonts.poppins(
-                    color: kSecondary.withOpacity(0.5),
-                    fontSize: 10.sp,
+              return Container(
+                margin: const EdgeInsets.only(bottom: gMargin / 2),
+                decoration: BoxDecoration(
+                  borderRadius: const BorderRadius.all(Radius.circular(10)),
+                  border: const Border.fromBorderSide(
+                    BorderSide(
+                      color: kSecondary,
+                      width: 1.0,
+                    ),
                   ),
+                  color: kSecondary.withOpacity(0.3),
                 ),
-                title: Text(
-                  "Tk - Why Would you do that {$index}",
-                  style: GoogleFonts.poppins(
-                    color: kSecondary,
-                    fontSize: 14.sp,
+                child: ListTile(
+                  horizontalTitleGap: 0,
+                  contentPadding: const EdgeInsets.only(
+                    left: gPadding,
+                  ),
+                  subtitle: Text(
+                    'Downloading... $index%',
+                    style: GoogleFonts.poppins(
+                      fontSize: 12.sp,
+                      fontStyle: FontStyle.italic,
+                      color: kSecondary.withOpacity(0.7),
+                    ),
+                  ),
+                  trailing: IconButton(
+                    onPressed: null,
+                    icon: const Icon(
+                      MdiIcons.close,
+                      color: kSecondary,
+                    ),
+                    iconSize: 20.sp,
+                  ),
+                  title: Text(
+                    "Tk - Why Would you do that {$index}",
+                    style: GoogleFonts.poppins(
+                      color: kSecondary,
+                      fontSize: 14.sp,
+                    ),
                   ),
                 ),
               );
