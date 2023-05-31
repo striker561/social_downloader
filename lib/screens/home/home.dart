@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:social_downloader/constants.dart';
+import 'package:social_downloader/screens/home/components/que_list.dart';
 
 import 'components/grab_video_btn.dart';
 import 'components/link_container.dart';
@@ -30,15 +31,22 @@ class _HomeScreenState extends State<HomeScreen> {
           appBar: homeScreenAppbar(),
           body: Padding(
             padding: const EdgeInsets.all(gPadding),
-            child: Column(
-              children: [
-                LinkContainer(videolink: videolink),
-                videoTypeSelector(),
-                SizedBox(
-                  height: 10.h,
-                ),
-                const GrabVideoBtn(),
-              ],
+            child: SingleChildScrollView(
+              physics: const BouncingScrollPhysics(),
+              child: Column(
+                children: [
+                  LinkContainer(videolink: videolink),
+                  videoTypeSelector(),
+                  SizedBox(
+                    height: 10.h,
+                  ),
+                  const GrabVideoBtn(),
+                  SizedBox(
+                    height: 10.h,
+                  ),
+                  const QueList(),
+                ],
+              ),
             ),
           ),
         ),
